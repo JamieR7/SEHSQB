@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB SEHS Exam Question Generator</title>
+    <style>
+        :root {
+            --color-primary: #3280f6;
+            --color-primary-hover: #2563eb;
+            --color-success: #16a34a;
+            --color-warning: #ea580c;
+            --color-error: #dc2626;
+            --color-text: #1f2937;
+            --color-bg: #f9fafb;
+            --color-surface: #ffffff;
+            --color-border: #e5e7eb;
+            --radius: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--color-primary);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--color-primary);
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .panel {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--color-border);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-text);
+            font-size: 0.95em;
+        }
+
+        select, textarea {
+            padding: 12px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1em;
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(50, 128, 246, 0.1);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(50, 128, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #6b7280;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+        }
+
+        .btn-success {
+            background-color: var(--color-success);
+            color: white;
+            margin-right: 10px;
+        }
+
+        .btn-success:hover {
+            background-color: #15803d;
+        }
+
+        .question-section {
+            display: none;
+        }
+
+        .question-section.active {
+            display: block;
+        }
+
+        .question-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--color-primary);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .question-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .meta-item {
+            padding: 8px 12px;
+            background-color: #f3f4f6;
+            border-radius: var(--radius);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .meta-label {
+            color: #6b7280;
+            margin-right: 5px;
+        }
+
+        textarea.answer-input {
+            min-height: 150px;
+            padding: 15px;
+            font-size: 1em;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .feedback-section {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--color-success);
+            background-color: #f0fdf4;
+        }
+
+        .feedback-section.active {
+            display: block;
+        }
+
+        .score-display {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--color-success);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-success);
+        }
+
+        .score-display.partial {
+            color: var(--color-warning);
+            border-bottom-color: var(--color-warning);
+        }
+
+        .score-display.low {
+            color: var(--color-error);
+            border-bottom-color: var(--color-error);
+        }
+
+        .feedback-box {
+            background-color: white;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin: 15px 0;
+            border-left: 3px solid #dbeafe;
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .markscheme-section {
+            background-color: #fef3c7;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 15px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .markscheme-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .markscheme-content {
+            color: #78350f;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .markscheme-content li {
+            margin-bottom: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .state-display {
+            display: none;
+            padding: 15px;
+            background-color: #dbeafe;
+            border-radius: var(--radius);
+            margin: 20px 0;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .state-display.active {
+            display: block;
+        }
+
+        .controls-button {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            background-color: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--color-error);
+            margin: 10px 0;
+        }
+
+        .success-message {
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 15px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--color-success);
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question-meta {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IB SEHS Exam Question Generator</h1>
+            <p class="subtitle">Paper 1A & Paper 2 Practice Questions</p>
+        </header>
+
+        <div class="panel">
+            <h2>Select Question Parameters</h2>
+            <div class="controls">
+                <div class="form-group">
+                    <label for="topic">Topic</label>
+                    <select id="topic">
+                        <option value="">-- Choose Topic --</option>
+                        <option value="move">How do we move?</option>
+                        <option value="respond">How do we respond to exercise/activity?</option>
+                        <option value="optimize">How can we optimize human performance?</option>
+                        <option value="factors">What are the factors that affect human performance?</option>
+                        <option value="health">What is the connection between exercise and health?</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="unit">Unit</label>
+                    <select id="unit">
+                        <option value="">-- Select Topic First --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="command">Command Term</label>
+                    <select id="command">
+                        <option value="">-- Choose Command Term --</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="controls-button">
+                <button class="btn btn-primary" onclick="generateQuestion()">Generate Question</button>
+            </div>
+        </div>
+
+        <div class="state-display" id="stateDisplay"></div>
+
+        <div class="panel question-section" id="questionSection">
+            <h2>Question</h2>
+            <div class="question-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Topic:</span>
+                    <span id="displayTopic"></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Unit:</span>
+                    <span id="displayUnit"></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Command Term:</span>
+                    <span id="displayCommand"></span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Marks:</span>
+                    <span id="displayMarks"></span>
+                </div>
+            </div>
+
+            <div class="question-box" id="questionBox"></div>
+
+            <div class="form-group">
+                <label for="studentAnswer">Your Answer</label>
+                <textarea id="studentAnswer" class="answer-input" placeholder="Type your answer here..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="submitAnswer()">Submit Answer</button>
+                <button class="btn btn-secondary" onclick="generateQuestion()">New Question</button>
+            </div>
+        </div>
+
+        <div class="panel feedback-section" id="feedbackSection">
+            <div class="score-display" id="scoreDisplay"></div>
+
+            <div class="feedback-box">
+                <div class="feedback-title">Examiner Feedback</div>
+                <div id="feedbackContent"></div>
+            </div>
+
+            <div class="markscheme-section" id="markschemeSection">
+                <div class="markscheme-title">Mark Scheme</div>
+                <div class="markscheme-content" id="markschemeContent"></div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="retryQuestion()">Try Again</button>
+                <button class="btn btn-secondary" onclick="generateQuestion()">New Question</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question bank with comprehensive exam-style questions (truncated for file size - include full question bank from main version)
+        const questionBank = {
+            move: {
+                "A.2.3 Energy systems SL": {
+                    questions: [
+                        {
+                            text: "A sprinter runs a 100m race in 10 seconds. Describe the energy systems that provide ATP during this sprint activity, and explain how the predominant energy system changes as the sprint progresses.",
+                            marks: 6,
+                            command: "Describe",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>ATP-CP system operates in first 10-15 seconds [1]</li><li>PCr breakdown frees Pi which combines with ADP to reform ATP [1]</li><li>Provides rapid ATP production but depletes quickly [1]</li><li>Anaerobic glycolysis becomes predominant after ~10-15 seconds [1]</li><li>Glucose broken down to pyruvate then converted to lactate [1]</li><li>Produces 2 net ATP per glucose molecule [1]</li></ul>`,
+                            keywords: ['ATP-CP system', 'PCr', 'anaerobic glycolysis', 'pyruvate', 'lactate', 'ATP production'],
+                            examinerNotes: "Understanding of energy system transitions essential."
+                        }
+                    ]
+                },
+                "B.1.3 Muscular function": {
+                    questions: [
+                        {
+                            text: "Describe the re-synthesis of ATP by the ATP-CP system during the first 10-15 seconds of intense exercise.",
+                            marks: 4,
+                            command: "Describe",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Creatine phosphate (CP/PCr) is a high-energy molecule/fuel [1]</li><li>CP releases energy (exothermic reaction) and phosphate molecule (Pi) [1]</li><li>Energy released is used to add Pi to ADP to re-synthesise ATP (endothermic) [1]</li><li>Reaction is a coupled reaction where one reaction is linked to another [1]</li></ul>`,
+                            keywords: ['creatine phosphate', 'PCr', 'Pi', 'ADP', 'coupled reaction', 'ATP'],
+                            examinerNotes: "Students often struggle with reaction details."
+                        }
+                    ]
+                }
+            },
+            respond: {
+                "A.1.1 Inter-system communication": {
+                    questions: [
+                        {
+                            text: "Outline the nervous and hormonal mechanisms that increase heart rate during moderate intensity exercise.",
+                            marks: 6,
+                            command: "Outline",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Sympathetic nervous system stimulation occurs [1]</li><li>Sympathetic nerves release noradrenaline at the sinoatrial node [1]</li><li>Heart rate increases to meet increased oxygen demands [1]</li><li>Adrenal medulla releases adrenaline into bloodstream [1]</li><li>Adrenaline binds to receptors on heart, increasing rate [1]</li><li>Increased cardiac output (HR × SV) ensures blood delivery to working muscles [1]</li></ul>`,
+                            keywords: ['sympathetic', 'noradrenaline', 'adrenaline', 'sinoatrial node', 'cardiac output'],
+                            examinerNotes: "Brief summary acceptable. Both mechanisms should be mentioned."
+                        }
+                    ]
+                }
+            },
+            optimize: {
+                "A.2.2 Fuelling for health and performance": {
+                    questions: [
+                        {
+                            text: "Discuss the role of carbohydrate loading in optimizing endurance performance during a marathon event.",
+                            marks: 6,
+                            command: "Discuss",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Carbohydrate loading increases muscle glycogen stores above normal levels [1]</li><li>Higher glycogen stores delay glycogen depletion during extended exercise [1]</li><li>Allows athletes to maintain higher exercise intensity for longer [1]</li><li>Reduces reliance on less efficient fat oxidation [1]</li><li>May increase body weight slightly due to water retention with glycogen [1]</li><li>Benefits sustained endurance performance but not short, high-intensity events [1]</li></ul>`,
+                            keywords: ['carbohydrate loading', 'glycogen', 'performance', 'endurance', 'fatigue', 'depletion'],
+                            examinerNotes: "Balanced discussion should include both benefits and considerations."
+                        }
+                    ]
+                }
+            },
+            factors: {
+                "C.3 Motivation": {
+                    questions: [
+                        {
+                            text: "Compare and contrast intrinsic and extrinsic motivation in determining whether a teenage athlete continues to train in their sport.",
+                            marks: 7,
+                            command: "Compare",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Intrinsic motivation: enjoyment, satisfaction, personal achievement [1]</li><li>Extrinsic motivation: rewards, recognition, avoiding punishment [1]</li><li>Similarity: Both drive behavior and sustained training [1]</li><li>Intrinsic linked to long-term commitment to sport [1]</li><li>Extrinsic may be short-term and dependent on rewards [1]</li><li>Intrinsic more predictive of continued participation [1]</li><li>Self-determination theory suggests intrinsic motivation essential for well-being [1]</li></ul>`,
+                            keywords: ['intrinsic motivation', 'extrinsic motivation', 'commitment', 'self-determination', 'participation'],
+                            examinerNotes: "Comparison requires both similarities and differences throughout."
+                        }
+                    ]
+                }
+            },
+            health: {
+                "A.3.2 Benefits to health of being active": {
+                    questions: [
+                        {
+                            text: "State three health benefits of regular physical activity participation and briefly explain one of them.",
+                            marks: 4,
+                            command: "State",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Reduced cardiovascular disease risk [1]</li><li>Reduced type 2 diabetes risk [1]</li><li>Improved mental health/reduced depression [1]</li><li>Example explanation: Regular activity improves insulin sensitivity, reducing blood glucose and diabetes risk [1]</li></ul>`,
+                            keywords: ['cardiovascular', 'diabetes', 'mental health', 'physical activity', 'benefits'],
+                            examinerNotes: "State questions require brief answers; one explained benefit acceptable."
+                        }
+                    ]
+                }
+            }
+        };
+
+        const commandTerms = {
+            "State": { level: 1, definition: "Give a specific name, value or other brief answer without explanation." },
+            "Outline": { level: 2, definition: "Give a brief account or summary." },
+            "Describe": { level: 2, definition: "Give a detailed account." },
+            "Explain": { level: 3, definition: "Give a detailed account including reasons or causes." },
+            "Compare": { level: 3, definition: "Give an account of similarities between items, referring to both throughout." },
+            "Discuss": { level: 3, definition: "Offer a considered and balanced review that includes a range of arguments." }
+        };
+
+        const unitsByTopic = {
+            move: ["A.2.3 Energy systems SL", "B.1.3 Muscular function"],
+            respond: ["A.1.1 Inter-system communication"],
+            optimize: ["A.2.2 Fuelling for health and performance"],
+            factors: ["C.3 Motivation"],
+            health: ["A.3.2 Benefits to health of being active"]
+        };
+
+        let currentQuestion = null;
+        let selectedUnit = null;
+
+        document.getElementById('topic').addEventListener('change', function(e) {
+            const topic = e.target.value;
+            const unitSelect = document.getElementById('unit');
+            const commandSelect = document.getElementById('command');
+            
+            unitSelect.innerHTML = '<option value="">-- Select Unit --</option>';
+            commandSelect.innerHTML = '<option value="">-- Select Unit First --</option>';
+            
+            if (topic && unitsByTopic[topic]) {
+                unitsByTopic[topic].forEach(unit => {
+                    const option = document.createElement('option');
+                    option.value = unit;
+                    option.textContent = unit;
+                    unitSelect.appendChild(option);
+                });
+            }
+        });
+
+        document.getElementById('unit').addEventListener('change', function(e) {
+            selectedUnit = e.target.value;
+            updateCommandTerms();
+        });
+
+        function updateCommandTerms() {
+            const commandSelect = document.getElementById('command');
+            commandSelect.innerHTML = '<option value="">-- Choose Command Term --</option>';
+            
+            if (!selectedUnit) return;
+
+            let availableCommands = [];
+            const topic = document.getElementById('topic').value;
+            
+            if (questionBank[topic] && questionBank[topic][selectedUnit]) {
+                const unitQuestions = questionBank[topic][selectedUnit].questions;
+                const uniqueCommands = [...new Set(unitQuestions.map(q => q.command))];
+                availableCommands = uniqueCommands.filter(cmd => commandTerms[cmd]);
+            }
+
+            availableCommands.forEach(cmd => {
+                const option = document.createElement('option');
+                option.value = cmd;
+                option.textContent = `${cmd} (Level ${commandTerms[cmd].level})`;
+                commandSelect.appendChild(option);
+            });
+        }
+
+        function generateQuestion() {
+            const topic = document.getElementById('topic').value;
+            const unit = document.getElementById('unit').value;
+            const command = document.getElementById('command').value;
+
+            if (!topic || !unit || !command) {
+                showState('Please select all parameters before generating a question.', 'error');
+                return;
+            }
+
+            if (!questionBank[topic] || !questionBank[topic][unit]) {
+                showState('Question bank for this unit is being populated. Please try another unit.', 'warning');
+                return;
+            }
+
+            const unitQuestions = questionBank[topic][unit].questions;
+            const randomQuestion = unitQuestions[Math.floor(Math.random() * unitQuestions.length)];
+
+            currentQuestion = randomQuestion;
+
+            document.getElementById('displayTopic').textContent = topic.charAt(0).toUpperCase() + topic.slice(1);
+            document.getElementById('displayUnit').textContent = unit;
+            document.getElementById('displayCommand').textContent = command;
+            document.getElementById('displayMarks').textContent = randomQuestion.marks;
+            document.getElementById('questionBox').textContent = randomQuestion.text;
+            document.getElementById('studentAnswer').value = '';
+
+            document.getElementById('questionSection').classList.add('active');
+            document.getElementById('feedbackSection').classList.remove('active');
+            document.getElementById('stateDisplay').classList.remove('active');
+
+            showState(`Question generated! Maximum marks: ${randomQuestion.marks}`, 'success');
+        }
+
+        function submitAnswer() {
+            if (!currentQuestion) {
+                showState('Please generate a question first.', 'error');
+                return;
+            }
+
+            const answer = document.getElementById('studentAnswer').value.trim();
+            if (!answer) {
+                showState('Please provide an answer before submitting.', 'error');
+                return;
+            }
+
+            const score = scoreAnswer(answer, currentQuestion);
+            displayFeedback(score, currentQuestion);
+        }
+
+        function scoreAnswer(answer, question) {
+            const marks = question.marks;
+            const keywords = question.keywords;
+            
+            const foundKeywords = keywords.filter(keyword => 
+                answer.toLowerCase().includes(keyword.toLowerCase())
+            ).length;
+
+            const keywordRatio = foundKeywords / keywords.length;
+            let score = 0;
+            const minWordCount = Math.max(20, marks * 10);
+
+            if (answer.length < minWordCount) {
+                score = Math.round(marks * 0.3);
+            } else if (keywordRatio >= 0.8) {
+                score = marks;
+            } else if (keywordRatio >= 0.6) {
+                score = Math.round(marks * 0.8);
+            } else if (keywordRatio >= 0.4) {
+                score = Math.round(marks * 0.5);
+            } else if (keywordRatio >= 0.2) {
+                score = Math.round(marks * 0.3);
+            } else {
+                score = Math.round(marks * 0.1);
+            }
+
+            return {
+                score: Math.max(0, Math.min(score, marks)),
+                maxMarks: marks,
+                keywordsFound: foundKeywords,
+                totalKeywords: keywords.length
+            };
+        }
+
+        function displayFeedback(scoreData, question) {
+            const { score, maxMarks, keywordsFound, totalKeywords } = scoreData;
+            const percentage = Math.round((score / maxMarks) * 100);
+
+            let scoreClass = '';
+            if (percentage >= 80) scoreClass = 'success';
+            else if (percentage >= 50) scoreClass = 'partial';
+            else scoreClass = 'low';
+
+            const scoreElement = document.getElementById('scoreDisplay');
+            scoreElement.textContent = `Score: ${score}/${maxMarks} (${percentage}%)`;
+            scoreElement.className = `score-display ${scoreClass}`;
+
+            const feedbackContent = document.getElementById('feedbackContent');
+            let feedback = '';
+
+            if (percentage >= 80) {
+                feedback = `<p><strong>Excellent work!</strong> Your answer demonstrates strong understanding and includes most key terminology.</p>`;
+            } else if (percentage >= 60) {
+                feedback = `<p><strong>Good effort.</strong> Your answer covers the main points but could be strengthened by including more technical terminology (${totalKeywords - keywordsFound} key terms were missing).</p>`;
+            } else if (percentage >= 40) {
+                feedback = `<p><strong>Some understanding demonstrated.</strong> Only ${keywordsFound} of ${totalKeywords} key concepts were included. Review the mark scheme and add more detail.</p>`;
+            } else {
+                feedback = `<p><strong>Further study needed.</strong> Review course materials on this unit and study the mark scheme carefully.</p>`;
+            }
+
+            feedbackContent.innerHTML = feedback;
+            document.getElementById('markschemeContent').innerHTML = question.markscheme;
+            document.getElementById('feedbackSection').classList.add('active');
+        }
+
+        function retryQuestion() {
+            document.getElementById('studentAnswer').value = '';
+            document.getElementById('feedbackSection').classList.remove('active');
+            document.getElementById('studentAnswer').focus();
+        }
+
+        function showState(message, type = 'info') {
+            const stateDisplay = document.getElementById('stateDisplay');
+            stateDisplay.innerHTML = `<div class="${type}-message">${message}</div>`;
+            stateDisplay.classList.add('active');
+            setTimeout(() => {
+                stateDisplay.classList.remove('active');
+            }, 4000);
+        }
+
+        window.addEventListener('load', function() {
+            showState('Welcome! Select your parameters above to generate a practice question.', 'info');
+        });
+    </script>
+</body>
+</html>

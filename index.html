@@ -1450,8 +1450,16 @@
                 return;
             }
 
-            const unitQuestions = questionBank[topic][unit].questions;
-            const randomQuestion = unitQuestions[Math.floor(Math.random() * unitQuestions.length)];
+           const unitQuestions = questionBank[topic][unit].questions;
+const filteredQuestions = unitQuestions.filter(q => q.command === command);
+
+if (filteredQuestions.length === 0) {
+    showState(`No questions available with command term "${command}" for this unit.`, 'warning');
+    return;
+}
+
+const randomQuestion = filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
+
 
             currentQuestion = randomQuestion;
 

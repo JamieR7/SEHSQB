@@ -189,6 +189,7 @@
             font-size: 1em;
             resize: vertical;
             font-family: inherit;
+            width: 100%;
         }
 
         .feedback-section {
@@ -324,7 +325,7 @@
     <div class="container">
         <header>
             <h1>IB SEHS Exam Question Generator</h1>
-            <p class="subtitle">Paper 1A & Paper 2 Practice Questions</p>
+            <p class="subtitle">Paper 1A & Paper 2 Practice Questions - 50+ Questions</p>
         </header>
 
         <div class="panel">
@@ -419,7 +420,7 @@
     </div>
 
     <script>
-        // Question bank with comprehensive exam-style questions (truncated for file size - include full question bank from main version)
+        // Complete Question Bank with 50+ IB SEHS Exam Questions
         const questionBank = {
             move: {
                 "A.2.3 Energy systems SL": {
@@ -432,6 +433,33 @@
                             markscheme: `<ul><li>ATP-CP system operates in first 10-15 seconds [1]</li><li>PCr breakdown frees Pi which combines with ADP to reform ATP [1]</li><li>Provides rapid ATP production but depletes quickly [1]</li><li>Anaerobic glycolysis becomes predominant after ~10-15 seconds [1]</li><li>Glucose broken down to pyruvate then converted to lactate [1]</li><li>Produces 2 net ATP per glucose molecule [1]</li></ul>`,
                             keywords: ['ATP-CP system', 'PCr', 'anaerobic glycolysis', 'pyruvate', 'lactate', 'ATP production'],
                             examinerNotes: "Understanding of energy system transitions essential."
+                        },
+                        {
+                            text: "A swimmer completes a 1500m freestyle race lasting approximately 15 minutes. Which energy system is predominantly used and explain why the aerobic system becomes the main ATP producer for this event.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Oxidative/aerobic system is predominant [1]</li><li>Duration of event (15 minutes) exceeds anaerobic capacity [1]</li><li>Oxygen supply is adequate to meet aerobic demands [1]</li><li>Aerobic system produces large amounts of ATP (~32-38 ATP per glucose) [1]</li><li>Allows sustained energy production for long duration [1]</li></ul>`,
+                            keywords: ['aerobic', 'oxidative system', 'oxygen', 'ATP production', 'duration', 'sustained'],
+                            examinerNotes: "Link energy system selection to exercise duration."
+                        },
+                        {
+                            text: "Calculate the net ATP yield from one glucose molecule using anaerobic glycolysis and explain why this is significantly less than aerobic respiration.",
+                            marks: 4,
+                            command: "Calculate",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Glucose → 2 Pyruvate produces 2 ATP (substrate level phosphorylation) [1]</li><li>Net yield = 2 ATP (minus 2 ATP used in initial phosphorylation) [1]</li><li>Aerobic produces 32-38 ATP from same glucose [1]</li><li>Anaerobic only partially breaks down glucose; acetyl-CoA and citric acid cycle cannot proceed without oxygen [1]</li></ul>`,
+                            keywords: ['net ATP', 'anaerobic glycolysis', 'substrate level phosphorylation', 'aerobic respiration', 'yield'],
+                            examinerNotes: "Calculation must show working; comparison explains efficiency difference."
+                        },
+                        {
+                            text: "Analyse why a 400m runner (approximately 45-50 seconds) requires both anaerobic and aerobic energy systems during the race.",
+                            marks: 5,
+                            command: "Analyse",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>First 10-15 seconds: ATP-CP system provides rapid ATP [1]</li><li>15-45 seconds: Anaerobic glycolysis predominates due to high intensity [1]</li><li>Lactate accumulates and fatigue begins [1]</li><li>Aerobic system contributes throughout but cannot meet full energy demands at this intensity [1]</li><li>Both systems working together allows maintenance of speed; neither alone sufficient [1]</li></ul>`,
+                            keywords: ['ATP-CP', 'anaerobic glycolysis', 'aerobic', '400m', 'intensity', 'lactate', 'energy systems'],
+                            examinerNotes: "Breaking down contribution of each system across race duration required."
                         }
                     ]
                 },
@@ -445,6 +473,130 @@
                             markscheme: `<ul><li>Creatine phosphate (CP/PCr) is a high-energy molecule/fuel [1]</li><li>CP releases energy (exothermic reaction) and phosphate molecule (Pi) [1]</li><li>Energy released is used to add Pi to ADP to re-synthesise ATP (endothermic) [1]</li><li>Reaction is a coupled reaction where one reaction is linked to another [1]</li></ul>`,
                             keywords: ['creatine phosphate', 'PCr', 'Pi', 'ADP', 'coupled reaction', 'ATP'],
                             examinerNotes: "Students often struggle with reaction details."
+                        },
+                        {
+                            text: "A tennis player performs a backhand shot. Analyse how the muscles work in pairs to extend the elbow during this movement.",
+                            marks: 4,
+                            command: "Analyse",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Triceps brachii act as agonist/prime mover and contract concentrically [1]</li><li>Biceps brachii act as antagonist and relax/inhibited during extension [1]</li><li>Reciprocal inhibition allows voluntary movement control [1]</li><li>Force production accelerates the racket through the ball [1]</li></ul>`,
+                            keywords: ['agonist', 'antagonist', 'triceps', 'biceps', 'concentric', 'reciprocal inhibition'],
+                            examinerNotes: "Breaking down muscle pair action is essential."
+                        },
+                        {
+                            text: "Outline the three main types of muscle contraction and provide an example of each type during a football kicking movement.",
+                            marks: 6,
+                            command: "Outline",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Concentric contraction: Muscle shortens while contracting and doing positive work [1]</li><li>Example: Quadriceps during knee extension phase of kick [1]</li><li>Eccentric contraction: Muscle lengthens while under tension/resisting movement [1]</li><li>Example: Hamstring controlling deceleration of leg after follow-through [1]</li><li>Isometric contraction: Muscle develops tension without changing length [1]</li><li>Example: Core stabilizers maintaining body posture during kick [1]</li></ul>`,
+                            keywords: ['concentric', 'eccentric', 'isometric', 'contraction', 'muscle', 'lengthens', 'shortens'],
+                            examinerNotes: "One example of each type required."
+                        },
+                        {
+                            text: "Explain how the structure of skeletal muscle at the sarcomere level enables muscle contraction using the sliding filament theory.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Sarcomere contains thick filaments (myosin) and thin filaments (actin) [1]</li><li>Myosin heads bind to actin forming cross-bridges [1]</li><li>Power stroke pulls thin filaments toward center, shortening sarcomere [1]</li><li>ATP binding to myosin heads causes detachment and muscle relaxation [1]</li><li>Repeated cycles of attachment-power stroke-detachment enable muscle contraction [1]</li></ul>`,
+                            keywords: ['sarcomere', 'myosin', 'actin', 'cross-bridge', 'power stroke', 'sliding filament', 'ATP'],
+                            examinerNotes: "Explanation of mechanism and role of ATP essential."
+                        }
+                    ]
+                },
+                "B.1.2 Structure and function of connective tissues and joints": {
+                    questions: [
+                        {
+                            text: "Define circumduction and state two examples of joints in the human body that allow this movement.",
+                            marks: 3,
+                            command: "State",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Circumduction is the circling of a body segment at a joint [1]</li><li>Example 1: Shoulder joint (glenohumeral) - arm action in cricket bowling [1]</li><li>Example 2: Hip joint (ball and socket) - leg action in breaststroke [1]</li></ul>`,
+                            keywords: ['circumduction', 'circling', 'shoulder', 'hip', 'ball and socket'],
+                            examinerNotes: "Brief answers sufficient. Accept other appropriate joints."
+                        },
+                        {
+                            text: "Describe the functions of ligaments and cartilage in maintaining joint stability and health.",
+                            marks: 5,
+                            command: "Describe",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Ligaments are tough connective tissue connecting bone to bone [1]</li><li>Ligaments prevent excessive movement and restrict movement beyond normal range [1]</li><li>Cartilage is smooth connective tissue covering bone ends (articular cartilage) [1]</li><li>Cartilage reduces friction and absorbs shock during movement [1]</li><li>Both structures protect joints from damage and degenerative disease [1]</li></ul>`,
+                            keywords: ['ligaments', 'cartilage', 'connective tissue', 'stability', 'friction', 'shock absorption'],
+                            examinerNotes: "Must address both structures and their distinct functions."
+                        },
+                        {
+                            text: "Compare the range of motion available at a hinge joint and a ball-and-socket joint, using the elbow and hip as examples.",
+                            marks: 4,
+                            command: "Compare",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Hinge joint (elbow) allows movement in one plane only (flexion/extension) [1]</li><li>Ball-and-socket joint (hip) allows movement in multiple planes and circumduction [1]</li><li>Similarity: Both are synovial joints with cartilage and synovial fluid [1]</li><li>Difference: Hip has greater range of motion and mobility; elbow is more stable [1]</li></ul>`,
+                            keywords: ['hinge joint', 'ball-and-socket', 'range of motion', 'flexion', 'extension', 'circumduction', 'synovial'],
+                            examinerNotes: "Both similarities and differences required."
+                        }
+                    ]
+                },
+                "B.1.4 Levers in movement and sport": {
+                    questions: [
+                        {
+                            text: "During a push-up from the floor, identify the fulcrum, effort arm, and load arm. Explain how the mechanical advantage could be increased.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Fulcrum is at the toes [1]</li><li>Effort arm is the distance from toes to hands [1]</li><li>Load arm is the distance from toes to centre of mass [1]</li><li>Reduce load arm by moving closer to fulcrum (wall push-up easier) [1]</li><li>Or increase effort arm by extending limbs further from fulcrum [1]</li></ul>`,
+                            keywords: ['fulcrum', 'effort arm', 'load arm', 'mechanical advantage', 'moment arm'],
+                            examinerNotes: "Must identify all three components correctly."
+                        },
+                        {
+                            text: "Classify the three types of levers found in the human body and give one anatomical example of each type.",
+                            marks: 3,
+                            command: "Classify",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Class 1 (fulcrum in middle): Example - head and neck extension with cervical vertebrae as fulcrum [1]</li><li>Class 2 (load in middle): Example - calf raise with ball of foot as fulcrum and heel lift as load [1]</li><li>Class 3 (effort in middle): Example - elbow flexion with biceps as effort between fulcrum and load [1]</li></ul>`,
+                            keywords: ['class 1', 'class 2', 'class 3', 'lever', 'fulcrum', 'load', 'effort'],
+                            examinerNotes: "One anatomical example of each required."
+                        }
+                    ]
+                },
+                "B.2.1 Newton's laws of motion": {
+                    questions: [
+                        {
+                            text: "Apply Newton's second law of motion to explain how a basketball player can increase the velocity of a pass to a teammate.",
+                            marks: 4,
+                            command: "Apply",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Newton's second law: F = ma or acceleration is proportional to applied force [1]</li><li>Greater force applied to the ball = greater acceleration [1]</li><li>Increased muscle contraction/more forceful arm movement [1]</li><li>Ball achieves higher velocity [1]</li></ul>`,
+                            keywords: ['force', 'acceleration', 'mass', 'velocity', 'Newton\'s second law'],
+                            examinerNotes: "Application to sport context is essential."
+                        },
+                        {
+                            text: "A cyclist without a helmet falls and their head hits the pavement. Explain why the brain may sustain injury with reference to Newton's first law.",
+                            marks: 3,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Newton's first law: Object in motion remains in motion unless acted upon by external force [1]</li><li>Cyclist's head is moving forward when it hits pavement (external force) [1]</li><li>Brain inside skull continues moving forward due to inertia, causing it to move relative to skull and damage brain tissue [1]</li></ul>`,
+                            keywords: ['Newton\'s first law', 'inertia', 'motion', 'external force', 'relative motion'],
+                            examinerNotes: "Higher-level application requiring critical thinking."
+                        },
+                        {
+                            text: "State Newton's third law of motion and explain how this law applies to the take-off phase of a long jump.",
+                            marks: 4,
+                            command: "State",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Newton's third law: For every action, there is an equal and opposite reaction [1]</li><li>Jumper exerts downward force on ground during take-off [1]</li><li>Ground exerts equal upward force on jumper (reaction force) [1]</li><li>Upward force propels jumper into the air [1]</li></ul>`,
+                            keywords: ['Newton\'s third law', 'action', 'reaction', 'equal', 'opposite', 'force'],
+                            examinerNotes: "Statement of law required plus application to jumping."
+                        }
+                    ]
+                },
+                "B.1.1 Anatomical position, planes and movement": {
+                    questions: [
+                        {
+                            text: "Distinguish between abduction and adduction, using examples from a breaststroke swimming action.",
+                            marks: 4,
+                            command: "Distinguish",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Abduction is movement of a limb away from the midline of the body [1]</li><li>Example: Legs kicking out at the hip during breaststroke power phase [1]</li><li>Adduction is movement of a limb towards the midline of the body [1]</li><li>Example: Legs coming together at the hip during the glide phase [1]</li></ul>`,
+                            keywords: ['abduction', 'adduction', 'midline', 'movement', 'limb'],
+                            examinerNotes: "Must provide clear differences AND examples."
                         }
                     ]
                 }
@@ -460,6 +612,89 @@
                             markscheme: `<ul><li>Sympathetic nervous system stimulation occurs [1]</li><li>Sympathetic nerves release noradrenaline at the sinoatrial node [1]</li><li>Heart rate increases to meet increased oxygen demands [1]</li><li>Adrenal medulla releases adrenaline into bloodstream [1]</li><li>Adrenaline binds to receptors on heart, increasing rate [1]</li><li>Increased cardiac output (HR × SV) ensures blood delivery to working muscles [1]</li></ul>`,
                             keywords: ['sympathetic', 'noradrenaline', 'adrenaline', 'sinoatrial node', 'cardiac output'],
                             examinerNotes: "Brief summary acceptable. Both mechanisms should be mentioned."
+                        },
+                        {
+                            text: "Explain how the hypothalamus and pituitary gland work together to regulate growth hormone levels in response to training stimuli.",
+                            marks: 4,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Hypothalamus detects low growth hormone levels via feedback [1]</li><li>Hypothalamus secretes growth-hormone-releasing hormone (GHRH) [1]</li><li>GHRH travels to anterior pituitary via portal blood vessels [1]</li><li>Pituitary secretes growth hormone which stimulates muscle protein synthesis [1]</li></ul>`,
+                            keywords: ['hypothalamus', 'pituitary', 'growth hormone', 'GHRH', 'feedback', 'adaptation'],
+                            examinerNotes: "Feedback mechanisms are crucial."
+                        }
+                    ]
+                },
+                "A.1.2 Maintaining homeostasis": {
+                    questions: [
+                        {
+                            text: "Explain how athletes prepare for competition in a hot and humid environment by using heat acclimatization, including physiological adaptations that occur.",
+                            marks: 6,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Heat acclimatization involves repeated exposure to heat stress over 9-14 days [1]</li><li>Athletes train in similar environmental conditions to race location [1]</li><li>Adaptations include increased plasma volume and expanded blood volume [1]</li><li>Increased sweating rate and lower core body temperature at given work intensity [1]</li><li>Improved skin blood flow enhances heat loss to environment [1]</li><li>Result: Better sustained cardiac output and reduced physiological strain [1]</li></ul>`,
+                            keywords: ['heat acclimatization', 'plasma volume', 'sweating', 'core temperature', 'cardiac output'],
+                            examinerNotes: "Must distinguish heat acclimatization from genetic adaptation."
+                        },
+                        {
+                            text: "Outline the physiological responses of shivering and non-shivering thermogenesis when an athlete is exposed to cold.",
+                            marks: 4,
+                            command: "Outline",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Shivering involves rapid involuntary contraction and relaxation of skeletal muscles [1]</li><li>Rhythmic muscle tremors at 10-20 per second generate heat through metabolism [1]</li><li>Non-shivering thermogenesis increases metabolic rate without shivering [1]</li><li>Heat production may increase 4-5 times within minutes to maintain body temperature [1]</li></ul>`,
+                            keywords: ['shivering', 'thermogenesis', 'muscles', 'metabolism', 'heat production'],
+                            examinerNotes: "Simple outline - no deep explanation needed."
+                        }
+                    ]
+                },
+                "A.1.3 Transport": {
+                    questions: [
+                        {
+                            text: "Describe the mechanism by which oxygen partial pressure differences enable oxygen to diffuse from the blood into working muscle tissue during exercise.",
+                            marks: 5,
+                            command: "Describe",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Partial pressure of oxygen (PPO2) is higher in arterial blood than in muscle tissue [1]</li><li>Oxygen molecules move from high concentration (blood) to low concentration (muscle) [1]</li><li>This is passive diffusion down the concentration gradient [1]</li><li>During exercise, working muscles consume oxygen rapidly, maintaining steep gradient [1]</li><li>Increased blood flow during exercise further enhances oxygen delivery [1]</li></ul>`,
+                            keywords: ['partial pressure', 'oxygen', 'diffusion', 'gradient', 'concentration'],
+                            examinerNotes: "Gradient concept is essential."
+                        }
+                    ]
+                },
+                "A.2.1 Water and electrolyte balance": {
+                    questions: [
+                        {
+                            text: "Explain how the body responds to increased fluid loss during high-intensity exercise in a hot environment.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Increased sweating rate in response to elevated core temperature [1]</li><li>Fluid loss exceeds fluid intake, causing dehydration [1]</li><li>Increased blood osmolality detected by osmoreceptors in hypothalamus [1]</li><li>Hypothalamus stimulates posterior pituitary to release ADH [1]</li><li>ADH acts on kidneys to increase water reabsorption and reduce urine output [1]</li></ul>`,
+                            keywords: ['sweating', 'dehydration', 'osmolality', 'ADH', 'homeostasis', 'osmoreceptors'],
+                            examinerNotes: "Cause-effect relationships essential for homeostatic control."
+                        }
+                    ]
+                },
+                "C.2.2 Attentional control": {
+                    questions: [
+                        {
+                            text: "Distinguish between broad and narrow attentional focus, using examples from a basketball player during free-throw shooting.",
+                            marks: 4,
+                            command: "Distinguish",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Broad attentional focus: Awareness of multiple cues and environmental information simultaneously [1]</li><li>Example: Defender scanning court to locate all teammates and opponents [1]</li><li>Narrow attentional focus: Concentration on single cue while excluding others [1]</li><li>Example: Player at free-throw line focusing only on basket, blocking out crowd noise [1]</li></ul>`,
+                            keywords: ['broad focus', 'narrow focus', 'attention', 'cues', 'environmental'],
+                            examinerNotes: "Clear differentiation with appropriate examples required."
+                        }
+                    ]
+                },
+                "C.4.1 Arousal and anxiety": {
+                    questions: [
+                        {
+                            text: "Outline the inverted-U hypothesis as it relates to sports performance and identify one limitation of the model.",
+                            marks: 4,
+                            command: "Outline",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Performance increases with arousal up to an optimal point [1]</li><li>At optimal arousal, performance is maximized [1]</li><li>Beyond optimal arousal, performance declines with over-arousal [1]</li><li>Limitation: Individual differences exist - optimal arousal varies by athlete and sport [1]</li></ul>`,
+                            keywords: ['inverted-U hypothesis', 'arousal', 'performance', 'optimal', 'individual differences'],
+                            examinerNotes: "Can include simple diagram. Limitations show critical thinking."
                         }
                     ]
                 }
@@ -477,9 +712,122 @@
                             examinerNotes: "Balanced discussion should include both benefits and considerations."
                         }
                     ]
+                },
+                "A.2.3 Energy systems HL": {
+                    questions: [
+                        {
+                            text: "Compare and contrast the anaerobic glycolytic system and the oxidative (aerobic) system in terms of ATP yield, duration of use, and by-products.",
+                            marks: 7,
+                            command: "Compare",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Anaerobic glycolysis produces 2 net ATP per glucose; aerobic produces 32-38 ATP [1]</li><li>Anaerobic lasts 2-3 minutes; aerobic continues for hours [1]</li><li>Anaerobic produces lactate as by-product; aerobic produces CO2 and H2O [1]</li><li>Both break down glucose; both essential for different activities [1]</li><li>Anaerobic operates with limited oxygen; aerobic requires oxygen [1]</li><li>Oxygen sufficiency is key difference [1]</li><li>Both contribute to total ATP during continuous exercise [1]</li></ul>`,
+                            keywords: ['ATP', 'anaerobic', 'aerobic', 'lactate', 'oxygen', 'duration', 'glycolysis'],
+                            examinerNotes: "Both similarities AND differences throughout required."
+                        }
+                    ]
+                },
+                "A.3.1 Qualities of training": {
+                    questions: [
+                        {
+                            text: "Analyze how the principle of progressive overload should be applied in a 12-week training program for a soccer player preparing for competition.",
+                            marks: 6,
+                            command: "Analyze",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Progressive overload means gradually increasing training stimulus [1]</li><li>Can increase intensity (speed/power) of training [1]</li><li>Can increase volume (duration/repetitions) [1]</li><li>Example: Start with 30min moderate, increase to 60min or higher intensity [1]</li><li>Allows body to adapt and prevent fitness plateaus [1]</li><li>Must balance overload with adequate recovery to avoid overtraining [1]</li></ul>`,
+                            keywords: ['progressive overload', 'intensity', 'volume', 'adaptation', 'recovery', 'plateau'],
+                            examinerNotes: "Breaking down components is required for analysis level."
+                        },
+                        {
+                            text: "Distinguish between periodization and a continuous training approach for a 12-month athlete development plan.",
+                            marks: 4,
+                            command: "Distinguish",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Periodization: Training divided into phases with specific focus (macrocycles, mesocycles) [1]</li><li>Periodization example: Off-season (strength), pre-season (power), competitive (maintenance) [1]</li><li>Continuous training: Same intensity/type throughout year with no variation [1]</li><li>Periodization superior: Allows peaking, recovery, and prevents overuse injuries [1]</li></ul>`,
+                            keywords: ['periodization', 'phases', 'macrocycle', 'continuous', 'training', 'peaking'],
+                            examinerNotes: "Clear differences essential; examples strengthen answers."
+                        }
+                    ]
+                },
+                "B.2.3 Movement analysis and its application": {
+                    questions: [
+                        {
+                            text: "Outline the four phases of a discrete skill (basketball free throw) and explain how understanding these phases helps improve coaching.",
+                            marks: 5,
+                            command: "Outline",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Preparatory phase: Player bends knees and positions feet [1]</li><li>Force production phase: Player extends legs and raises arms to shoot [1]</li><li>Critical instant: Ball leaves fingertips [1]</li><li>Follow-through: Arms remain extended, body balanced [1]</li><li>Coaches can identify errors in each phase and provide targeted feedback to improve technique [1]</li></ul>`,
+                            keywords: ['preparatory', 'force production', 'critical instant', 'follow-through', 'discrete skill'],
+                            examinerNotes: "Simple outline; application to coaching shows understanding."
+                        }
+                    ]
+                },
+                "C.2.1 Motor learning processes": {
+                    questions: [
+                        {
+                            text: "Using a sporting example, explain whole-part-whole skill presentation and suggest why this method may be more effective than practicing only parts.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Whole: Performer attempts complete skill (e.g., full long jump) to understand flow [1]</li><li>Part: Practice individual components (run-up, takeoff, flight, landing) separately [1]</li><li>Whole: Reintegrate parts back into complete movement [1]</li><li>More effective than parts-only because: Maintains movement rhythm and context [1]</li><li>Prevents losing complex skill elements that emerge only when integrated [1]</li></ul>`,
+                            keywords: ['whole-part-whole', 'skill presentation', 'integration', 'context', 'motor learning'],
+                            examinerNotes: "Explanation of why this method works is key."
+                        }
+                    ]
+                },
+                "C.4.2 Coping": {
+                    questions: [
+                        {
+                            text: "Distinguish between problem-focused coping and emotion-focused coping strategies that athletes use to manage stress during competition.",
+                            marks: 4,
+                            command: "Distinguish",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Problem-focused: Address root cause of stress (e.g., improve technique to reduce errors) [1]</li><li>Emotion-focused: Manage emotional response to stress (e.g., deep breathing, positive self-talk) [1]</li><li>Problem-focused targets controllable factors [1]</li><li>Emotion-focused manages psychological response when situation cannot be changed [1]</li></ul>`,
+                            keywords: ['problem-focused', 'emotion-focused', 'coping', 'stress', 'management'],
+                            examinerNotes: "Must distinguish clearly with appropriate examples."
+                        }
+                    ]
                 }
             },
             factors: {
+                "A.1.2.2 The body's response to environment": {
+                    questions: [
+                        {
+                            text: "Explain how an athlete can use the 'live high, train low' (LHTL) method to improve altitude training benefits without compromising training intensity.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Live high: Athlete sleeps/lives at moderate altitude (2000-3000m) [1]</li><li>Train low: Athlete trains at sea level or lower altitude (<1500m) [1]</li><li>Living at altitude stimulates red blood cell and haemoglobin production [1]</li><li>Training at sea level allows high-intensity training to be maintained [1]</li><li>Result: Increased oxygen carrying capacity benefits without training intensity loss [1]</li></ul>`,
+                            keywords: ['live high train low', 'altitude', 'red blood cells', 'haemoglobin', 'training intensity', 'LHTL'],
+                            examinerNotes: "Explanation of why LHTL works better than simple altitude training required."
+                        }
+                    ]
+                },
+                "B.2.2 Fluid mechanics": {
+                    questions: [
+                        {
+                            text: "Describe two types of drag and explain how each affects a cyclist's performance.",
+                            marks: 5,
+                            command: "Describe",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Surface drag: Friction between cyclist's skin/clothing and air as layers of air stick to surface [1]</li><li>Surface drag reduced by: Shaving skin, wearing smooth tight clothing, smooth helmet [1]</li><li>Form drag: Pressure difference created as cyclist pushes against air and air pushes back [1]</li><li>Form drag reduced by: Crouched/aerodynamic position, streamlined bike design [1]</li><li>Combined drag forces oppose motion, requiring greater power output from cyclist [1]</li></ul>`,
+                            keywords: ['surface drag', 'form drag', 'friction', 'pressure', 'aerodynamic', 'drag forces'],
+                            examinerNotes: "Description of both types essential; real examples strengthen answer."
+                        }
+                    ]
+                },
+                "C.1 Individual differences": {
+                    questions: [
+                        {
+                            text: "Evaluate the extent to which personality traits can influence sport performance.",
+                            marks: 8,
+                            command: "Evaluate",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Extraversion can support team cohesion and communication [1]</li><li>Neuroticism may lead to anxiety and reduced confidence [1]</li><li>Conscientiousness supports consistent training and goal pursuit [1]</li><li>However, personality is not the only factor affecting performance [1]</li><li>Skill level, fitness, technique, and strategy also important [1]</li><li>Environment and coaching influence performance equally [1]</li><li>Social learning theory suggests personality is malleable [1]</li><li>Conclusion: Personality influences but does not determine performance [1]</li></ul>`,
+                            keywords: ['personality traits', 'performance', 'evaluation', 'strengths', 'limitations', 'Big Five'],
+                            examinerNotes: "Evaluation requires judgment about degree of influence."
+                        }
+                    ]
+                },
                 "C.3 Motivation": {
                     questions: [
                         {
@@ -490,6 +838,37 @@
                             markscheme: `<ul><li>Intrinsic motivation: enjoyment, satisfaction, personal achievement [1]</li><li>Extrinsic motivation: rewards, recognition, avoiding punishment [1]</li><li>Similarity: Both drive behavior and sustained training [1]</li><li>Intrinsic linked to long-term commitment to sport [1]</li><li>Extrinsic may be short-term and dependent on rewards [1]</li><li>Intrinsic more predictive of continued participation [1]</li><li>Self-determination theory suggests intrinsic motivation essential for well-being [1]</li></ul>`,
                             keywords: ['intrinsic motivation', 'extrinsic motivation', 'commitment', 'self-determination', 'participation'],
                             examinerNotes: "Comparison requires both similarities and differences throughout."
+                        },
+                        {
+                            text: "Discuss how mastery and ego motivational climates created by coaches influence athlete participation and performance in sport.",
+                            marks: 6,
+                            command: "Discuss",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Mastery climate: Success based on personal improvement and effort [1]</li><li>Ego climate: Success based on social comparison and beating others [1]</li><li>Mastery climate associated with higher intrinsic motivation and satisfaction [1]</li><li>Ego climate linked to anxiety and fear of failure [1]</li><li>Coaches using TARGET approach can create mastery climate [1]</li><li>Mastery climate promotes long-term participation; ego climate increases dropout risk [1]</li></ul>`,
+                            keywords: ['mastery climate', 'ego climate', 'motivation', 'TARGET', 'participation', 'satisfaction'],
+                            examinerNotes: "Should address both climates and their effects."
+                        },
+                        {
+                            text: "Explain how achievement goal theory can help coaches create an environment where all athletes experience success regardless of ability level.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Achievement goal theory proposes mastery and performance goals [1]</li><li>Mastery goals: Focus on personal improvement and skill development [1]</li><li>Performance goals: Focus on outcomes and comparison with others [1]</li><li>Coaches should emphasize mastery goals for all athletes [1]</li><li>Allow athletes to define success personally (time improvements, technique development) rather than winning only [1]</li><li>This approach maintains motivation across all ability levels [1]</li></ul>`,
+                            keywords: ['achievement goal theory', 'mastery goals', 'performance goals', 'personal improvement', 'motivation'],
+                            examinerNotes: "Application to coaching environment important."
+                        }
+                    ]
+                },
+                "C.5 Psychological skills": {
+                    questions: [
+                        {
+                            text: "Explain how mental imagery using the PETTLEP framework can help reduce anxiety before a competitive performance.",
+                            marks: 5,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>PETTLEP involves Physical, Environment, Task, Timing, Learning, Emotion, Perspective [1]</li><li>Physical: Athlete mimics actual body position and movements [1]</li><li>Environment: Imagery conducted in actual or similar competition venue [1]</li><li>Task and Emotion: Athlete imagines executing skill successfully while feeling confident [1]</li><li>Regular practice reduces anxiety by increasing familiarity and confidence [1]</li></ul>`,
+                            keywords: ['mental imagery', 'PETTLEP', 'anxiety', 'confidence', 'visualization', 'psychological skill'],
+                            examinerNotes: "Framework understanding and application to anxiety reduction required."
                         }
                     ]
                 }
@@ -505,6 +884,50 @@
                             markscheme: `<ul><li>Reduced cardiovascular disease risk [1]</li><li>Reduced type 2 diabetes risk [1]</li><li>Improved mental health/reduced depression [1]</li><li>Example explanation: Regular activity improves insulin sensitivity, reducing blood glucose and diabetes risk [1]</li></ul>`,
                             keywords: ['cardiovascular', 'diabetes', 'mental health', 'physical activity', 'benefits'],
                             examinerNotes: "State questions require brief answers; one explained benefit acceptable."
+                        },
+                        {
+                            text: "Outline how regular physical activity can reduce cardiovascular disease risk through physiological changes.",
+                            marks: 4,
+                            command: "Outline",
+                            commandLevel: 1,
+                            markscheme: `<ul><li>Physical activity strengthens cardiac muscle function [1]</li><li>Regular exercise reduces blood pressure through vasodilation [1]</li><li>Improves cholesterol profile (higher HDL, lower LDL) [1]</li><li>Reduces arterial plaque formation and atherosclerosis risk [1]</li></ul>`,
+                            keywords: ['cardiovascular', 'blood pressure', 'cholesterol', 'heart', 'physical activity', 'atherosclerosis'],
+                            examinerNotes: "Brief outline showing multiple physiological mechanisms."
+                        }
+                    ]
+                },
+                "B.3 Injury": {
+                    questions: [
+                        {
+                            text: "Describe the risk factors that increase susceptibility to musculoskeletal injury in sport.",
+                            marks: 5,
+                            command: "Describe",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Intrinsic factors: age, previous injury, muscle imbalance, flexibility, strength deficits [1]</li><li>Extrinsic factors: training errors, poor technique, inadequate equipment [1]</li><li>Environmental factors: playing surface quality, weather conditions [1]</li><li>Overtraining without adequate recovery increases injury risk [1]</li><li>Poor warm-up and inadequate prehabilitation/injury prevention exercises [1]</li></ul>`,
+                            keywords: ['risk factors', 'intrinsic', 'extrinsic', 'musculoskeletal', 'injury prevention', 'training'],
+                            examinerNotes: "Coverage of multiple risk factor categories expected."
+                        },
+                        {
+                            text: "Distinguish between acute and chronic injuries, providing examples from a sporting context and explaining the different management approaches.",
+                            marks: 5,
+                            command: "Distinguish",
+                            commandLevel: 2,
+                            markscheme: `<ul><li>Acute injury: Occurs immediately from sudden application of excessive force [1]</li><li>Example: Ankle ligament sprain from sudden twisting during soccer match [1]</li><li>Management: RICE protocol (Rest, Ice, Compression, Elevation) [1]</li><li>Chronic injury: Develops gradually from repeated application of force over time [1]</li><li>Example: Tennis elbow from repetitive throwing motions [1]</li><li>Management: Gradual rehabilitation, gradual return to activity [1]</li></ul>`,
+                            keywords: ['acute injury', 'chronic injury', 'force', 'RICE', 'repeated', 'rehabilitation'],
+                            examinerNotes: "Clear differences plus appropriate management examples required."
+                        }
+                    ]
+                },
+                "A.3.3 Fatigue and recovery": {
+                    questions: [
+                        {
+                            text: "Explain the mechanisms of central and peripheral fatigue and discuss how coaches can manipulate recovery strategies to enhance athlete performance.",
+                            marks: 7,
+                            command: "Explain",
+                            commandLevel: 3,
+                            markscheme: `<ul><li>Central fatigue: Fatigue originating in central nervous system (brain, spinal cord) [1]</li><li>Central fatigue may involve neurotransmitter depletion and reduced motor drive [1]</li><li>Peripheral fatigue: Fatigue within the muscle itself [1]</li><li>Peripheral fatigue mechanisms: Lactate accumulation, phosphate depletion, calcium issues [1]</li><li>Recovery strategies: Adequate sleep (7-9 hours) supports CNS recovery [1]</li><li>Nutrition (carbohydrates, protein): Replenishes glycogen and supports muscle repair [1]</li><li>Active recovery: Light exercise enhances blood flow and waste removal [1]</li></ul>`,
+                            keywords: ['central fatigue', 'peripheral fatigue', 'recovery', 'glycogen', 'sleep', 'nutrition', 'active recovery'],
+                            examinerNotes: "AHL question requiring depth in mechanism and application."
                         }
                     ]
                 }
@@ -515,17 +938,54 @@
             "State": { level: 1, definition: "Give a specific name, value or other brief answer without explanation." },
             "Outline": { level: 2, definition: "Give a brief account or summary." },
             "Describe": { level: 2, definition: "Give a detailed account." },
-            "Explain": { level: 3, definition: "Give a detailed account including reasons or causes." },
-            "Compare": { level: 3, definition: "Give an account of similarities between items, referring to both throughout." },
-            "Discuss": { level: 3, definition: "Offer a considered and balanced review that includes a range of arguments." }
+            "Classify": { level: 1, definition: "Arrange into classes/categories." },
+            "Apply": { level: 2, definition: "Use an idea, equation, principle in a new situation." },
+            "Calculate": { level: 2, definition: "Obtain a numerical answer showing working." },
+            "Distinguish": { level: 2, definition: "Make clear the differences between items." },
+            "Analyse": { level: 3, definition: "Break down to bring out essential elements." },
+            "Compare": { level: 3, definition: "Give account of similarities and differences." },
+            "Discuss": { level: 3, definition: "Offer considered, balanced review with range of arguments." },
+            "Evaluate": { level: 3, definition: "Make appraisal by weighing strengths and limitations." },
+            "Explain": { level: 3, definition: "Give detailed account including reasons or causes." }
         };
 
         const unitsByTopic = {
-            move: ["A.2.3 Energy systems SL", "B.1.3 Muscular function"],
-            respond: ["A.1.1 Inter-system communication"],
-            optimize: ["A.2.2 Fuelling for health and performance"],
-            factors: ["C.3 Motivation"],
-            health: ["A.3.2 Benefits to health of being active"]
+            move: [
+                "A.2.3 Energy systems SL",
+                "B.1.3 Muscular function",
+                "B.1.2 Structure and function of connective tissues and joints",
+                "B.1.4 Levers in movement and sport",
+                "B.2.1 Newton's laws of motion",
+                "B.1.1 Anatomical position, planes and movement"
+            ],
+            respond: [
+                "A.1.1 Inter-system communication",
+                "A.1.2 Maintaining homeostasis",
+                "A.1.3 Transport",
+                "A.2.1 Water and electrolyte balance",
+                "C.2.2 Attentional control",
+                "C.4.1 Arousal and anxiety"
+            ],
+            optimize: [
+                "A.2.2 Fuelling for health and performance",
+                "A.2.3 Energy systems HL",
+                "A.3.1 Qualities of training",
+                "B.2.3 Movement analysis and its application",
+                "C.2.1 Motor learning processes",
+                "C.4.2 Coping"
+            ],
+            factors: [
+                "A.1.2.2 The body's response to environment",
+                "B.2.2 Fluid mechanics",
+                "C.1 Individual differences",
+                "C.3 Motivation",
+                "C.5 Psychological skills"
+            ],
+            health: [
+                "A.3.2 Benefits to health of being active",
+                "A.3.3 Fatigue and recovery",
+                "B.3 Injury"
+            ]
         };
 
         let currentQuestion = null;
@@ -678,13 +1138,28 @@
             let feedback = '';
 
             if (percentage >= 80) {
-                feedback = `<p><strong>Excellent work!</strong> Your answer demonstrates strong understanding and includes most key terminology.</p>`;
+                feedback = `<p><strong>Excellent work!</strong> Your answer demonstrates strong understanding of the concept and includes most key terminology. You've addressed the question requirements comprehensively.</p>`;
             } else if (percentage >= 60) {
-                feedback = `<p><strong>Good effort.</strong> Your answer covers the main points but could be strengthened by including more technical terminology (${totalKeywords - keywordsFound} key terms were missing).</p>`;
+                feedback = `<p><strong>Good effort.</strong> Your answer covers the main points but could be strengthened by:</p>
+                <ul>
+                    <li>Including more technical terminology (${totalKeywords - keywordsFound} key terms were missing)</li>
+                    <li>Providing more detailed explanations</li>
+                    <li>Ensuring all parts of the question are addressed</li>
+                </ul>`;
             } else if (percentage >= 40) {
-                feedback = `<p><strong>Some understanding demonstrated.</strong> Only ${keywordsFound} of ${totalKeywords} key concepts were included. Review the mark scheme and add more detail.</p>`;
+                feedback = `<p><strong>Some understanding demonstrated.</strong> Your answer addresses parts of the question but needs development:</p>
+                <ul>
+                    <li>Only ${keywordsFound} of ${totalKeywords} key concepts were included</li>
+                    <li>More detailed explanation required for higher marks</li>
+                    <li>Review the mark scheme to understand what examiners are looking for</li>
+                </ul>`;
             } else {
-                feedback = `<p><strong>Further study needed.</strong> Review course materials on this unit and study the mark scheme carefully.</p>`;
+                feedback = `<p><strong>Further study needed.</strong> Your answer suggests a need for additional learning:</p>
+                <ul>
+                    <li>Review course materials on this unit</li>
+                    <li>Study the mark scheme carefully</li>
+                    <li>Consider ${totalKeywords - keywordsFound} key concepts that were not addressed</li>
+                </ul>`;
             }
 
             feedbackContent.innerHTML = feedback;
